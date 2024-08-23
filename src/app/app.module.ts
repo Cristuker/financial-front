@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { HomeModule } from './home/home.module';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { PoStorageModule  } from '@po-ui/ng-storage';
+import { SignupModule } from './signup/signup.module';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { PoStorageModule  } from '@po-ui/ng-storage';
     PoModule,
     RouterModule.forRoot([]),
     PoTemplatesModule,
-    PoStorageModule.forRoot()
+    PoStorageModule.forRoot(),
+    SignupModule
   ],
   declarations: [AppComponent],
   providers: [LoginService, 

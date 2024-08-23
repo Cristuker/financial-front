@@ -1,0 +1,7 @@
+<po-page-default p-title="SignUp">
+    <po-dynamic-form p-auto-focus="name" #dynamicForm [p-fields]="fields" [p-value]="person"></po-dynamic-form>
+    <div class="po-row po-mt-3">
+        <po-button class="po-md-3 p-" p-label="Cadastrar" [p-disabled]="person.password !== person.passwordConfirm" (p-click)="submit()">
+        </po-button>
+    </div>
+</po-page-default>
