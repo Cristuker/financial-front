@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 
 import { PoStorageService } from '@po-ui/ng-storage';
 
-import { User } from '../model/user';
 import { environment } from '../../environment/environment';
-import { LoginDTO } from './dto/login.dto';
+import { LoginDTO } from '../dto/login.dto';
 import { Observable } from 'rxjs';
 
 @Injectable()

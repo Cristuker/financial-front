@@ -10,7 +10,6 @@ import { LoginService } from './login.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  hideRememberUser: boolean = true;
 
   constructor(
     private readonly loginService: LoginService,
@@ -20,14 +19,10 @@ export class LoginComponent {
   ) {}
 
   loginSubmit(formData: any) {
-    const user = Object.assign({
-      username: formData.login,
-      password: formData.password,
-    });
-
     this.loginService.login(formData.login, formData.password).subscribe(
-      () => {
-        this.storage.set('isLoggedIn', 'true').then(() => {
+      (response) => {
+        this.storage.set('isLoggedIn', 'true');
+        this.storage.set('token', response.access_token).then(() => {
           this.router.navigate(['/home']);
         });
       },
