@@ -86,9 +86,12 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
+              "src/favicon.ico",
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "**\/*",
+                "input": "node_modules/@po-ui/style/images",
+                "output": "assets/images"
               }
             ],
             "styles": [
