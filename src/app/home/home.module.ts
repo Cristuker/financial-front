@@ -4,10 +4,14 @@ import {
   PoMenuModule,
   PoMenuPanelModule,
   PoToolbarModule,
-  PoPageModule
+  PoPageModule,
+  PoTableModule,
+  ICONS_DICTIONARY,
+  PhosphorIconDictionary,
 } from '@po-ui/ng-components';
 import { HomeRoutingModule } from './home-routing.module';
-
+import { ClientsComponent } from './clients/clients.component';
+import { ClientsService } from './clients/clients.service';
 
 @NgModule({
   imports: [
@@ -15,9 +19,16 @@ import { HomeRoutingModule } from './home-routing.module';
     PoMenuPanelModule,
     PoMenuModule,
     PoToolbarModule,
-    PoPageModule
+    PoPageModule,
+    PoTableModule,
   ],
-  declarations: [HomeComponent],
-  providers: [],
+  declarations: [HomeComponent, ClientsComponent],
+  providers: [
+    ClientsService,
+    {
+      provide: ICONS_DICTIONARY,
+      useValue: PhosphorIconDictionary,
+    },
+  ],
 })
 export class HomeModule {}

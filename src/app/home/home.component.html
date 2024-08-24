@@ -8,5 +8,7 @@
 
   <po-toolbar p-title="Gerenciador de Contrator" [p-show-notification]="false"></po-toolbar>
 
-  <po-page-default [p-title]="menuItemSelected"></po-page-default>
+  <po-page-default [p-title]="menuItemSelected">
+    <router-outlet></router-outlet>
+  </po-page-default>
 </div>
