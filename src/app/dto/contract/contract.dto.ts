@@ -1,4 +1,4 @@
-import { ContractStatus } from './types/status';
+import { ContractStatus } from '../types/status';
 
 export interface ContractDTO {
   id: number;

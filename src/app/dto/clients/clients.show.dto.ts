@@ -1,4 +1,4 @@
-import { ContractDTO } from "./contract.dto";
+import { ContractDTO } from "../contract/contract.dto";
 
 export interface ClientShowDTO {
     ID: number;

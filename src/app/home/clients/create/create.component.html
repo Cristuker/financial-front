@@ -1,0 +1,13 @@
+<div class="po-mb-4">
+    <po-modal #modal p-title="Criar cliente">
+        <po-dynamic-form #dynamicForm [p-fields]="fields" [p-value]="client"></po-dynamic-form>
+
+        <po-modal-footer>
+            <po-button [p-disabled]="!!dynamicForm?.form?.invalid" p-label="Criar" (p-click)="submit()"> </po-button>
+
+            <po-button p-label="Fechar" (p-click)="modal.close()"> </po-button>
+        </po-modal-footer>
+    </po-modal>
+
+    <po-button p-label="Criar" (p-click)="modal.open()"> </po-button>
+</div>

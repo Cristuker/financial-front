@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { User } from "../dto/user.dto";
+import { User } from "../dto/user/user.dto";
 import { environment } from "../../environment/environment";
-import { CreateUser } from "../dto/create.user.dto";
+import { CreateUser } from "../dto/user/create.user.dto";
 import { Observable } from "rxjs";
 
 @Injectable()

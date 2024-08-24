@@ -1,2 +1,9 @@
-<po-table [p-items]="clientsTableView"> </po-table>
+<app-create-client></app-create-client>
+<div>
+    <po-search #poSearch class="po-md-12" name="Po Search" [p-items]="clientsTableView" [p-search-type]="'action'"
+        (p-change-model)="changeModel($event)"></po-search>
+</div>
 
+<po-table [p-items]="filteredItems"> </po-table>
+
+<po-loading-overlay [hidden]="isHideLoading"></po-loading-overlay>

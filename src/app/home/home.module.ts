@@ -8,10 +8,18 @@ import {
   PoTableModule,
   ICONS_DICTIONARY,
   PhosphorIconDictionary,
+  PoModalModule, 
+  PoButtonModule,
+  PoDynamicModule,
+  PoLoadingModule,
+  PoFieldModule,
+  PoSearchModule
 } from '@po-ui/ng-components';
 import { HomeRoutingModule } from './home-routing.module';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientsService } from './clients/clients.service';
+import { CreateComponent } from './clients/create/create.component';
+
 
 @NgModule({
   imports: [
@@ -21,8 +29,14 @@ import { ClientsService } from './clients/clients.service';
     PoToolbarModule,
     PoPageModule,
     PoTableModule,
+    PoModalModule,
+    PoButtonModule,
+    PoDynamicModule,
+    PoLoadingModule,
+    PoFieldModule,
+    PoSearchModule
   ],
-  declarations: [HomeComponent, ClientsComponent],
+  declarations: [HomeComponent, ClientsComponent, CreateComponent],
   providers: [
     ClientsService,
     {
