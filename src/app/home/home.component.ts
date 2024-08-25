@@ -16,10 +16,7 @@ export class HomeComponent {
       action: () => {
         this.router.navigate(['/home/clients']);
       }
-    },
-    {
-      label: 'Contratos'
-    },
+    }
   ];
 
   constructor(private readonly router: Router) {}
