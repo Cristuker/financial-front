@@ -30,11 +30,13 @@ export class ClientsComponent implements OnInit {
   poModalContract: PoModalComponent;
   @Output('openContract') openContract: EventEmitter<any> = new EventEmitter();
   @Output('openEditContract') openEditContract: EventEmitter<any> = new EventEmitter();
+  @Output('openEditClient') openEditClient: EventEmitter<any> = new EventEmitter();
   @Input('refreshList') refreshList: any;
 
   clientsTableView: ClientShowDTO[] = [];
   detail: ContractDTO;
   contractToUpdate: ContractDTO;
+  clientToUpdate: ClientDTO;
   filteredItems: Array<any> = [];
   originalClientsFormat: ClientDTO[] = [];
   isHideLoading = true;
@@ -48,17 +50,21 @@ export class ClientsComponent implements OnInit {
   ];
   actions: PoTableAction[] = [
     {
+      label: 'Editar cliente',
+      action: this.editClient.bind(this)
+    },
+    {
+      label: 'Remover cliente',
+      action: this.removeClient.bind(this),
+      disabled: this.shouldShowDeleteContract.bind(this),
+    },
+    {
       label: 'Criar contrato',
       action: this.createContract.bind(this),
     },
     {
       label: 'Editar contrato',
       action: this.updateContract.bind(this),
-      disabled: this.shouldShowDeleteContract.bind(this),
-    },
-    {
-      label: 'Remover cliente',
-      action: this.removeClient.bind(this),
       disabled: this.shouldShowDeleteContract.bind(this),
     },
     {
@@ -116,6 +122,7 @@ export class ClientsComponent implements OnInit {
   }
 
   refresh() {
+    console.log('refgresh')
     this.getClients();
   }
 
@@ -195,6 +202,14 @@ export class ClientsComponent implements OnInit {
     if (client) {
       this.contractToUpdate = client.contract;
       this.openEditContract.emit(this.contractToUpdate);
+    }
+  }
+
+  editClient(clientShow: ClientShowDTO) {
+    const client = this.findContract(clientShow.ID);
+    if (client) {
+      this.clientToUpdate = client;
+      this.openEditClient.emit(this.contractToUpdate);
     }
   }
 }

@@ -37,17 +37,12 @@ export class ClientsService {
     );
   }
 
-  async update(client: UpdateClientDTO): Promise<void> {
+  async update(id: number, client: UpdateClientDTO): Promise<void> {
     const headers = await this.generateHeaders();
-    const payload = {
-      name: client.name,
-      cpfCnpj: client.cpfCnpj,
-      phoneNumber: client.phoneNumber,
-    };
     await lastValueFrom(
-      this.http.patch<void>(
-        `${environment.API_URL}/client/${client.id}`,
-        payload,
+      this.http.put<void>(
+        `${environment.API_URL}/client/${id}`,
+        client,
         {
           headers: headers,
         }

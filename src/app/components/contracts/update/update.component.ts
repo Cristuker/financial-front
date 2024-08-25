@@ -65,7 +65,6 @@ export class UpdateContractComponent implements OnInit, OnChanges {
 
   async submit() {
     try {
-      console.log(this.contract)
       const payload: UpdateContractDTO = {
         canceled: this.contract.canceled,
         contractDate: new Date(this.contract.contractDate).toISOString(),

@@ -23,6 +23,7 @@ import { CreateClientComponent } from '../components/clients/create/create.compo
 import { CreateContractsComponent } from '../components/contracts/create/create.component';
 import { ContractService } from '../components/contracts/contracts.service';
 import { UpdateContractComponent } from '../components/contracts/update/update.component';
+import { UpdateClientComponent } from '../components/clients/update/update.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { UpdateContractComponent } from '../components/contracts/update/update.c
     ClientsComponent,
     CreateClientComponent,
     CreateContractsComponent,
-    UpdateContractComponent
+    UpdateContractComponent,
+    UpdateClientComponent
   ],
   providers: [
     ClientsService,
