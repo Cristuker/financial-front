@@ -18,6 +18,7 @@ export class AuthGuardService  {
   }
 
   checkLogin() {
+    this.loginService.isLoggedIn().then(console.log)
     return this.loginService.isLoggedIn().then(isLoggedIn => !isLoggedIn ? this.router.createUrlTree(['/login']) : true);
   }
 }

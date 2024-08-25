@@ -1,4 +1,7 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -11,8 +14,9 @@ import { PoModule } from '@po-ui/ng-components';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from './home/home.module';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
-import { PoStorageModule  } from '@po-ui/ng-storage';
+import { PoStorageModule } from '@po-ui/ng-storage';
 import { SignupModule } from './signup/signup.module';
+import { AuthGuardService } from './auth/auth.service';
 
 @NgModule({
   imports: [
@@ -26,11 +30,14 @@ import { SignupModule } from './signup/signup.module';
     RouterModule.forRoot([]),
     PoTemplatesModule,
     PoStorageModule.forRoot(),
-    SignupModule
+    SignupModule,
   ],
   declarations: [AppComponent],
-  providers: [LoginService, 
-    provideHttpClient(withInterceptorsFromDi()),],
+  providers: [
+    LoginService,
+    provideHttpClient(withInterceptorsFromDi()),
+    AuthGuardService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
