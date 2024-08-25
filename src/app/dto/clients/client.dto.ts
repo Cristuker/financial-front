@@ -5,5 +5,5 @@ export interface ClientDTO {
   name: string;
   cpfCnpj: string;
   phoneNumber: string;
-  contracts: ContractDTO[];
+  contract: ContractDTO;
 }

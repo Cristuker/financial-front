@@ -5,6 +5,7 @@ import { ClientDTO } from '../../dto/clients/client.dto';
 import { lastValueFrom } from 'rxjs';
 import { PoStorageService } from '@po-ui/ng-storage';
 import { CreateClientDTO } from '../../dto/clients/create.client.dto';
+import { UpdateClientDTO } from '../../dto/clients/update.client.dto';
 type Response = { clients: ClientDTO[] };
 
 @Injectable()
@@ -20,7 +21,6 @@ export class ClientsService {
     return await lastValueFrom(
       this.http.get<Response>(
         `${environment.API_URL}/client?page=1&size=10name=${name}`,
-
         {
           headers: headers,
         }
@@ -32,12 +32,30 @@ export class ClientsService {
     const headers = await this.generateHeaders();
     await lastValueFrom(
       this.http.post<void>(`${environment.API_URL}/client`, client, {
-        headers: headers
+        headers: headers,
       })
     );
   }
 
-  async generateHeaders() {
+  async update(client: UpdateClientDTO): Promise<void> {
+    const headers = await this.generateHeaders();
+    const payload = {
+      name: client.name,
+      cpfCnpj: client.cpfCnpj,
+      phoneNumber: client.phoneNumber,
+    };
+    await lastValueFrom(
+      this.http.patch<void>(
+        `${environment.API_URL}/client/${client.id}`,
+        payload,
+        {
+          headers: headers,
+        }
+      )
+    );
+  }
+
+  private async generateHeaders() {
     const token = await this.storage.get('token');
     return { Authorization: `Bearer ${token}` };
   }
