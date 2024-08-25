@@ -1,0 +1,12 @@
+<div class="po-mb-4">
+    <po-modal #modal p-title="Criar contrato">
+        <po-dynamic-form #dynamicForm [p-fields]="fields" [p-value]="contract">
+        </po-dynamic-form>
+
+        <po-modal-footer>
+            <po-button [p-disabled]="!!dynamicForm?.form?.invalid" p-label="Atualizar" (p-click)="submit()"> </po-button>
+
+            <po-button p-label="Fechar" (p-click)="modal.close()"> </po-button>
+        </po-modal-footer>
+    </po-modal>
+</div>

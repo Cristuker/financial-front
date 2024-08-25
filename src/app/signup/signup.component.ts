@@ -87,7 +87,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       (res) => {
-        console.log(res.error);
+        console.error(res.error);
         if (res.error.message.includes('Invalid password')) {
           this.poNotification.error('Senha inválida');
           this.poNotification.information(

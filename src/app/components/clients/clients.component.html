@@ -13,14 +13,8 @@
 <app-create-contract [openContract]="openContract" (refreshList)="refresh()"></app-create-contract>
 <po-modal p-click-out="true" p-size="sm" p-title="Contrato - {{ detail?.contractNumber }}">
     <po-info class="po-sm-6" p-label="Data" [p-value]="formatDate(detail?.contractDate)"> </po-info>
-    <po-info class="po-sm-6" p-label="Valor" [p-value]="formatCurrency(detail?.contractValue)"> </po-info>  
+    <po-info class="po-sm-6" p-label="Valor" [p-value]="formatCurrency(detail?.contractValue)"> </po-info>
     <po-info class="po-sm-6" p-label="Status" [p-value]="parseString(detail?.status)"></po-info>
 </po-modal>
 
-<!-- id: number;
-contractNumber: string;
-contractDate: Date;
-contractValue: number;
-clientId: number;
-status?: ContractStatus;
-canceled: boolean; -->
+<app-contract-update [contractToUpdate]="contractToUpdate"></app-contract-update>

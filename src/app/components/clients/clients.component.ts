@@ -15,9 +15,9 @@ import {
   PoTableAction,
   PoTableRowTemplateArrowDirection,
 } from '@po-ui/ng-components';
-import { CreateContractsComponent } from '../contracts/create/create.component';
 import { ContractService } from '../contracts/contracts.service';
 import { ContractDTO } from '../../dto/contract/contract.dto';
+import { formatDate } from '../../utils/formatDate';
 
 @Component({
   selector: 'app-contracts',
@@ -29,10 +29,12 @@ export class ClientsComponent implements OnInit {
 
   poModalContract: PoModalComponent;
   @Output('openContract') openContract: EventEmitter<any> = new EventEmitter();
+  @Output('openEditContract') openEditContract: EventEmitter<any> = new EventEmitter();
   @Input('refreshList') refreshList: any;
 
   clientsTableView: ClientShowDTO[] = [];
   detail: ContractDTO;
+  contractToUpdate: ContractDTO;
   filteredItems: Array<any> = [];
   originalClientsFormat: ClientDTO[] = [];
   isHideLoading = true;
@@ -51,6 +53,7 @@ export class ClientsComponent implements OnInit {
     },
     {
       label: 'Editar contrato',
+      action: this.updateContract.bind(this),
       disabled: this.shouldShowDeleteContract.bind(this),
     },
     {
@@ -174,15 +177,7 @@ export class ClientsComponent implements OnInit {
   }
 
   formatDate(date: any) {
-    const data = new Date(date);
-    if (isNaN(data.getTime())) return '';
-    const formatter = new Intl.DateTimeFormat('pt-BR', {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    });
-
-    return formatter.format(data);
+    return formatDate(date)
   }
 
   formatCurrency(value: any): string {
@@ -192,5 +187,14 @@ export class ClientsComponent implements OnInit {
     });
 
     return formatter.format(Number(value));
+  }
+
+  updateContract(clientShow: ClientShowDTO) {
+    const client = this.findContract(clientShow.ID);
+
+    if (client) {
+      this.contractToUpdate = client.contract;
+      this.openEditContract.emit(this.contractToUpdate);
+    }
   }
 }

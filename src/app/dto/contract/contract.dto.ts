@@ -1,6 +1,7 @@
 import { ContractStatus } from '../types/status';
 
 export interface ContractDTO {
+  [x: string]: any;
   id: number;
   contractNumber: string;
   contractDate: Date;
@@ -8,4 +9,5 @@ export interface ContractDTO {
   clientId: number;
   status?: ContractStatus;
   canceled: boolean;
+  payed: boolean;
 }

@@ -14,7 +14,7 @@ export class CreateContractsComponent implements OnInit {
 
   contract = {
     contractNumber: '',
-    contractDate: '',
+    contractDate: new Date(),
     contractValue: 0,
     clientId: 0,
   };
@@ -61,7 +61,11 @@ export class CreateContractsComponent implements OnInit {
   }
 
   async submit() {
-    await this.contractService.createContract(this.contract);
+    const payload = {
+      ...this.contract,
+      contractDate: this.contract.contractDate.toString()
+    }
+    await this.contractService.createContract(payload);
     this.refreshList.emit(null);
     this.poModal.close();
   }

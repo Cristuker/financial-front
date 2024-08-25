@@ -8,18 +8,21 @@ import {
   PoTableModule,
   ICONS_DICTIONARY,
   PhosphorIconDictionary,
-  PoModalModule, 
+  PoModalModule,
   PoButtonModule,
   PoDynamicModule,
   PoLoadingModule,
   PoFieldModule,
-  PoSearchModule
+  PoSearchModule,
+  PoInfoModule,
 } from '@po-ui/ng-components';
 import { HomeRoutingModule } from './home-routing.module';
-import { ClientsComponent } from './clients/clients.component';
-import { ClientsService } from './clients/clients.service';
-import { CreateComponent } from './clients/create/create.component';
-
+import { ClientsComponent } from '../components/clients/clients.component';
+import { ClientsService } from '../components/clients/clients.service';
+import { CreateClientComponent } from '../components/clients/create/create.component';
+import { CreateContractsComponent } from '../components/contracts/create/create.component';
+import { ContractService } from '../components/contracts/contracts.service';
+import { UpdateContractComponent } from '../components/contracts/update/update.component';
 
 @NgModule({
   imports: [
@@ -34,11 +37,19 @@ import { CreateComponent } from './clients/create/create.component';
     PoDynamicModule,
     PoLoadingModule,
     PoFieldModule,
-    PoSearchModule
+    PoSearchModule,
+    PoInfoModule
   ],
-  declarations: [HomeComponent, ClientsComponent, CreateComponent],
+  declarations: [
+    HomeComponent,
+    ClientsComponent,
+    CreateClientComponent,
+    CreateContractsComponent,
+    UpdateContractComponent
+  ],
   providers: [
     ClientsService,
+    ContractService,
     {
       provide: ICONS_DICTIONARY,
       useValue: PhosphorIconDictionary,
