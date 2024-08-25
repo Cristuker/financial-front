@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import {
   PoDynamicFormField,
   PoModalComponent,
@@ -11,8 +11,9 @@ import { ClientsService } from '../clients.service';
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
 })
-export class CreateComponent {
+export class CreateClientComponent {
   @ViewChild(PoModalComponent, { static: true }) poModal: PoModalComponent;
+  @Output('refreshList') refreshList: EventEmitter<any> = new EventEmitter();
 
   fields: Array<PoDynamicFormField> = [
     {
@@ -58,6 +59,7 @@ export class CreateComponent {
   async submit() {
     try {
       await this.clientsService.createClient(this.client);
+      this.refreshList.emit(null);
       this.poNotification.success('Cliente cadastrado com sucesso!');
     } catch (error) {
       console.error(error);
