@@ -1,27 +1,42 @@
-# FinancialFront
+# Financial Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Bibliotecas
+* Angular 18
+* PO UI
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Node.js
+* NPM
 
-## Build
+## Como rodar
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**1.** Clone esse repositório
 
-## Running unit tests
+```bash
+$ git clone https://github.com/Cristuker/financial-front.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**2.** Acesse o projeto na pasta raiz e instale as dependências
 
-## Running end-to-end tests
+```bash
+$ npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**3.** Execute o comando abaixo para rodar o projeto
 
-## Further help
+```bash
+$ npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Após seguir esses passos o projeto rodará na porta 4200
+
+> Para o projeto rodar corretamente clone e siga os passos para executar o [backend](https://github.com/Cristuker/financial-back)
+
+## Pontos importantes
+
+* Não consegui tempo habil para implementar testes e2e, integração e até mesmo unitários. Mas gastei esse tempo usando e aprendendo a PO UI para usar neste projeto
+
+Por [Cristian Silva](cristiansilva.dev)
